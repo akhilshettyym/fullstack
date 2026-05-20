@@ -119,7 +119,6 @@ Docker Desktop is an application you install on development systems that provide
   - Docker daemon (dockerd), exposing the Docker API
   - (Optional) Kubernetes cluster
 
-Docker Desktop is free for personal use, but requires a subscription for [certain commercial use cases](https://www.docker.com/pricing/faq/).
 
 Docker Engine refers to a subset of those component which are free and open source and can be installed only on Linux. Specifically Docker Engine includes:
 - Docker CLI
