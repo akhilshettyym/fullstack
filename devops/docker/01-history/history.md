@@ -102,7 +102,7 @@ In short : VMs package the entire "house" (the OS), while containers just packag
 
 ![](../assets/container.jpg)
 
-This approach results in containers being more "lightweight" than virtual machines, but not providing the save level of isolation:
+This approach results in containers being more "lightweight" than virtual machines, but not providing the same level of isolation:
 
 - No dependency conflicts
 - Even better utilization efficiency

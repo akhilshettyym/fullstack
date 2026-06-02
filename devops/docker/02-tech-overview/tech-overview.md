@@ -124,7 +124,7 @@ Docker Engine refers to a subset of those component which are free and open sour
 - Docker CLI
 - Docker daemon (dockerd), exposing the Docker API
 
-Docker Engine can build container images, run containers from them, and generally do most things that Docker Desktop but is Linux only and doesn't provide all of the developer experience polish that Docker Desktop provides.
+Docker Engine can build container images, run containers from them, and generally do most things that Docker Desktop but in Linux only and doesn't provide all of the developer experience polish that Docker Desktop provides.
 
 Container image registries are not part of Docker itself, but because they are the primary mechanism for storing and sharing container images it is worth including it here. Docker runs a registry named DockerHub, but there are many other registries as well. More info on these can be found in `07-container-registries`.
 
