@@ -1,0 +1,25 @@
+| [Routing & Layouts](../01-routing-layouts/README.md)
+| [Server vs Client](../02-server-client/README.md)
+| [Data Fetching & Rendering](../03-fetch-render/README.md)
+| [Caching & Revalidation](../04-cache-reval/README.md)
+| [Build & Runtime](../05-build-runtime/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Deployment & Hosting](../07-deployment-hosting/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Performance](../08-performance/README.md)
+| [Security](../09-security/README.md)
+| [Testing](../10-testing/README.md)
+| [TypeScript](../11-typescript/README.md)
+| [CSS & Styling](../12-css-styling/README.md)
+| [State Management](../13-state-mgt/README.md)
+| [Auth/Authorization](../14-auth/README.md)
+| [Internationalisation (i18n)](../15-il8n/README.md)
+| [Accessibility](../16-accessibility/README.md)
+| [Analytics & Observability](../17-analytics-obsv/README.md)
+| [Migration Strategies](../18-migration-strat/README.md)
+| [Monorepos & Micro-frontends](../19-monorepo-micro/READEME.md)
+| [Plugin Ecosystem](../20-plugins-eco/README.md)
+
+---
+
+Routing & Layouts: Next.js uses a filesystem-based routing. In the App Router (/app), pages (page.tsx) and layouts (layout.tsx) are React Server Components by default. The Pages Router (/pages) is legacy (uses getStaticProps/getServerSideProps). App Router supports nested layouts and dynamic routes (e.g. app/blog/[slug]/page.tsx). Root and nested layouts wrap pages hierarchically (see example above).

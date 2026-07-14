@@ -1,0 +1,25 @@
+| [Routing & Layouts](../01-routing-layouts/README.md)
+| [Server vs Client](../02-server-client/README.md)
+| [Data Fetching & Rendering](../03-fetch-render/README.md)
+| [Caching & Revalidation](../04-cache-reval/README.md)
+| [Build & Runtime](../05-build-runtime/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Deployment & Hosting](../07-deployment-hosting/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Performance](../08-performance/README.md)
+| [Security](../09-security/README.md)
+| [Testing](../10-testing/README.md)
+| [TypeScript](../11-typescript/README.md)
+| [CSS & Styling](../12-css-styling/README.md)
+| [State Management](../13-state-mgt/README.md)
+| [Auth/Authorization](../14-auth/README.md)
+| [Internationalisation (i18n)](../15-il8n/README.md)
+| [Accessibility](../16-accessibility/README.md)
+| [Analytics & Observability](../17-analytics-obsv/README.md)
+| [Migration Strategies](../18-migration-strat/README.md)
+| [Monorepos & Micro-frontends](../19-monorepo-micro/READEME.md)
+| [Plugin Ecosystem](../20-plugins-eco/README.md)
+
+---
+
+Caching & Revalidation: Next.js 16 introduces refined caching APIs. Use export const cache = 'force-cache' or 'no-store' in route config to override defaults. You can mark data functions with 'use cache' to memoize them. After mutating data on the server, call revalidatePath() or revalidateTag() to trigger updates. The built-in ISR (setting export const revalidate = 60) automatically updates static pages.

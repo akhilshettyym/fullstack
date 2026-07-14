@@ -1,0 +1,25 @@
+| [Routing & Layouts](../01-routing-layouts/README.md)
+| [Server vs Client](../02-server-client/README.md)
+| [Data Fetching & Rendering](../03-fetch-render/README.md)
+| [Caching & Revalidation](../04-cache-reval/README.md)
+| [Build & Runtime](../05-build-runtime/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Deployment & Hosting](../07-deployment-hosting/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Performance](../08-performance/README.md)
+| [Security](../09-security/README.md)
+| [Testing](../10-testing/README.md)
+| [TypeScript](../11-typescript/README.md)
+| [CSS & Styling](../12-css-styling/README.md)
+| [State Management](../13-state-mgt/README.md)
+| [Auth/Authorization](../14-auth/README.md)
+| [Internationalisation (i18n)](../15-il8n/README.md)
+| [Accessibility](../16-accessibility/README.md)
+| [Analytics & Observability](../17-analytics-obsv/README.md)
+| [Migration Strategies](../18-migration-strat/README.md)
+| [Monorepos & Micro-frontends](../19-monorepo-micro/READEME.md)
+| [Plugin Ecosystem](../20-plugins-eco/README.md)
+
+---
+
+Data Fetching & Rendering: In the App Router, data is fetched in Server Components using fetch or database calls. Next.js 16+ reuses the React 18 data-fetching model: fetch() requests are memoized and can be cached with directives like 'use cache'. By default, pages are streamed with React Suspense (non-blocking SSR), or can be statically prerendered. Legacy SSR/SSG/ISR/CSR concepts still apply: SSR (fetch per request), SSG (build-time prerendering), ISR (stale-while-revalidate builds via revalidate and on-demand revalidatePath/revalidateTag), and CSR (client-side hydration). Next.js now treats rendering as a spectrum, allowing fine-grained caching and revalidation. A comparison of SSR/SSG/ISR/CSR (and Server Components as a dynamic approach) is given in the table below.

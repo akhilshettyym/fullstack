@@ -1,0 +1,25 @@
+| [Routing & Layouts](../01-routing-layouts/README.md)
+| [Server vs Client](../02-server-client/README.md)
+| [Data Fetching & Rendering](../03-fetch-render/README.md)
+| [Caching & Revalidation](../04-cache-reval/README.md)
+| [Build & Runtime](../05-build-runtime/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Deployment & Hosting](../07-deployment-hosting/README.md)
+| [Middleware & Edge Functions](../06-middleware-edge/README.md)
+| [Performance](../08-performance/README.md)
+| [Security](../09-security/README.md)
+| [Testing](../10-testing/README.md)
+| [TypeScript](../11-typescript/README.md)
+| [CSS & Styling](../12-css-styling/README.md)
+| [State Management](../13-state-mgt/README.md)
+| [Auth/Authorization](../14-auth/README.md)
+| [Internationalisation (i18n)](../15-il8n/README.md)
+| [Accessibility](../16-accessibility/README.md)
+| [Analytics & Observability](../17-analytics-obsv/README.md)
+| [Migration Strategies](../18-migration-strat/README.md)
+| [Monorepos & Micro-frontends](../19-monorepo-micro/READEME.md)
+| [Plugin Ecosystem](../20-plugins-eco/README.md)
+
+---
+
+Server vs Client Components: By default, components in /app are Server Components – they render on the server and cannot use React hooks or browser APIs. Use the "use client" directive at the top of a file to make it a Client Component (supports state, effects, event handlers). This split reduces client bundle size, as server-only logic (data fetching, auth secrets) stays off the client.
