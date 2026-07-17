@@ -19,7 +19,11 @@
 | [Migration Strategies](../18-migration-strat/README.md)
 | [Monorepos & Micro-frontends](../19-monorepo-micro/READEME.md)
 | [Plugin Ecosystem](../20-plugins-eco/README.md)
-
+| [SEO Metadata](../21-seo-metadata/README.md)
+| [Server Action](../22-server-actions/README.md)
+| [Debugging and Dev Tools](../23-dev-tools/README.md)
+| [Prefetching and Lazy Loading](../24-prefetching-lazy/README.md)
+| [Progressive Web Apps](../25-web-apps/README.md)
 ---
 
 **Server vs Client Components**: By default, components in `/app` are `Server Components` – they render on the server and cannot use React hooks or browser APIs. Use the **"use client"** directive at the top of a file to make it a Client Component (supports state, effects, event handlers). This split reduces client bundle size, as server-only logic (data fetching, auth secrets) stays off the client.

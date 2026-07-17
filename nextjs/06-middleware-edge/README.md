@@ -19,6 +19,11 @@
 | [Migration Strategies](../18-migration-strat/README.md)
 | [Monorepos & Micro-frontends](../19-monorepo-micro/READEME.md)
 | [Plugin Ecosystem](../20-plugins-eco/README.md)
+| [SEO Metadata](../21-seo-metadata/README.md)
+| [Server Action](../22-server-actions/README.md)
+| [Debugging and Dev Tools](../23-dev-tools/README.md)
+| [Prefetching and Lazy Loading](../24-prefetching-lazy/README.md)
+| [Progressive Web Apps](../25-web-apps/README.md)
 
 ---
 
