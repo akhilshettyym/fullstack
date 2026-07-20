@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download at 0%</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background: #f0f0f0;
+      }
+
+      .download-box {
+        text-align: center;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+
+      .file-icon {
+        font-size: 15px;
+        margin-bottom: 20px;
+      }
+
+      .progress-container {
+        background: #e0e0e0;
+        border-radius: 50px;
+        height: 16px;
+        overflow: hidden;
+        margin: 20px 0;
+        position: relative;
+      }
+
+      .progress-bar {
+        width: 0%;
+        height: 100%;
+        background: #4caf50;
+        border-radius: 50px;
+        transition: cubic-bezier(0.075, 0.82, 0, 1);
+      }
+
+      .progress-text {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      .status {
+        color: #999;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="download-box">
+      <div class="file-icon">Downloading...</div>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="progress-text" id="progressNum">0%</div>
+      <div class="status">Waiting for server to respond...</div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

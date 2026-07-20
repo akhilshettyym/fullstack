@@ -1,0 +1,155 @@
+/* CreatePost.css */
+.create-post-section {
+  min-height: 100vh;
+  background: #0f0f1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: #e0e0ff;
+}
+
+.create-form-container {
+  background: #1a1a2e;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  padding: 40px 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid #334155;
+}
+
+.create-form-container form {
+  background: #050525;
+}
+
+.create-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #a78bfa, #7dd3fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-label {
+  display: block;
+  border: 2px dashed #64748b;
+  border-radius: 12px;
+  padding: 10px 50px;
+  text-align: center;
+  font-weight: 500;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #0f172a;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-label:hover {
+  border-color: #a78bfa;
+  color: #c4d0ff;
+  background: #1e2937;
+}
+
+.caption-input {
+  width: 100%;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 16px 20px;
+  color: #e0e0ff;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  transition: border 0.3s;
+  min-height: 50px;
+}
+
+.caption-input:focus {
+  outline: none;
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.2);
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 14px 28px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 150px;
+  max-width: 200px;
+}
+
+.btn-post {
+  background: linear-gradient(90deg, #8b5cf6, #06b6d4);
+  color: white;
+}
+
+.btn-post:hover {
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: #1e293b;
+  color: #c4d0ff;
+  border: 1px solid #475569;
+}
+
+.btn-secondary:hover {
+  background: #2d3b55;
+  color: #e0e0ff;
+  border-color: #64748b;
+}
+
+@media (max-width: 480px) {
+  .create-form-container {
+    padding: 32px 24px;
+    border-radius: 16px;
+  }
+
+  .create-title {
+    font-size: 2rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    max-width: none;
+    width: 100%;
+  }
+
+  .upload-label {
+    padding: 20px 16px;
+    min-height: 70px;
+  }
+}

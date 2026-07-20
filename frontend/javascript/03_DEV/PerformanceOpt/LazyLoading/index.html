@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy Loading Images Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+      h1 {
+        text-align: center;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px 0;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        background-color: #ddd;
+      }
+      .spacer {
+        height: 80vh;
+      }
+      .note {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lazy Loading Images Demo</h1>
+
+      <p class="note">
+        Scroll down to see lazy loading in action. The first image uses native
+        lazy loading (no JS). The others use the external JavaScript file for
+        demonstration.
+      </p>
+
+      <img
+        src="https://i.pinimg.com/originals/ec/b9/2d/ecb92d18c7855c986a5571c1b6f7cad2.jpg"
+        alt="Native lazy loaded image"
+        loading="lazy"
+        width="800"
+        height="400"
+      />
+
+      <div class="spacer"></div>
+
+      <img
+        data-src="https://img.freepik.com/premium-vector/mountain-lake-with-sunset-mountains-reflected-water_1284750-904.jpg?semt=ais_hybrid&w=740&q=80"
+        alt="JS lazy loaded image 2"
+        class="lazy"
+        width="800"
+        height="600"
+      />
+
+      <div class="spacer"></div>
+
+      <img
+        data-src="https://img.freepik.com/free-vector/night-landscape-with-lake-mountains-trees-coast-vector-cartoon-illustration-nature-scene-with-coniferous-forest-river-shore-rocks-moon-stars-dark-sky_107791-8253.jpg?semt=ais_hybrid&w=740&q=80"
+        alt="JS lazy loaded image 3"
+        class="lazy"
+        width="800"
+        height="600"
+      />
+
+      <div class="spacer"></div>
+
+      <img
+        data-src="https://wallpapers.com/images/featured/desktop-aesthetic-p586yttyum8x64jq.jpg"
+        alt="JS lazy loaded image 4"
+        class="lazy"
+        width="800"
+        height="600"
+      />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

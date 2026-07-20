@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h3 {
+        text-transform: capitalize;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+      #main {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #222;
+      }
+      h2 {
+        color: #555;
+        font-size: 10rem;
+        font-weight: 300;
+        user-select: none;
+      }
+      #file {
+        display: none;
+      }
+      #btn {
+        padding: 12px 22px;
+        background-color: rgb(43, 117, 43);
+        color: aquamarine;
+        border-radius: 10px;
+      }
+      #btn:hover {
+        background-color: rgb(20, 80, 20);
+      }
+    </style>
+  </head>
+  <body>
+    <h4>addEventListener</h4>
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsum, facilis!
+    </p>
+    <input type="text" placeholder="Name" />
+
+    <br />
+    <br />
+    <h3 id="deviceSelection">Select your device</h3>
+    <select>
+      <option selected disabled>Choose Your Device</option>
+      <option value="samsung">Samsung</option>
+      <option value="apple">Apple</option>
+      <option value="oneplus">Oneplus</option>
+      <option value="redmagic">RedMagic</option>
+    </select>
+
+    <div id="main">
+      <h2 id="type">a</h2>
+    </div>
+
+    <div id="main">
+      <input id="file" type="file" />
+      <div id="btn">Upload file</div>
+    </div>
+
+    <script src="Events.js"></script>
+  </body>
+</html>
