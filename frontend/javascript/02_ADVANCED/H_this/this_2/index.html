@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        background: linear-gradient(135deg, #141414 0%, #6e6e6e 100%);
+        min-height: 100vh;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+  <body class="p-8">
+    <div class="max-w-4xl mx-auto">
+      <h1
+        class="text-4xl font-bold text-center text-white mb-12 drop-shadow-lg"
+      >
+        User Manager
+      </h1>
+
+      <form
+        class="bg-white/80 backdrop-blur rounded-3xl p-10 shadow-2xl mb-12 border border-blue-100"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2" for="name"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-blue-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition"
+            />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2" for="role"
+              >Role</label
+            >
+            <input
+              type="text"
+              id="role"
+              name="role"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-blue-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition"
+            />
+          </div>
+          <div>
+            <label class="block text-gray-700 font-semibold mb-2" for="photo"
+              >Photo URL</label
+            >
+            <input
+              type="url"
+              id="photo"
+              name="photo"
+              placeholder="https://example.com/photo.jpg"
+              required
+              class="w-full px-4 py-3 rounded-xl border border-blue-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition"
+            />
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label class="block text-gray-700 font-semibold mb-2" for="bio"
+            >Bio</label
+          >
+          <textarea
+            id="bio"
+            name="bio"
+            rows="4"
+            required
+            class="w-full px-4 py-3 rounded-xl border border-blue-200 focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-200 transition resize-none"
+          ></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-gradient-to-r from-gray-400 to-black-300 text-white font-bold py-4 rounded-xl hover:from-black-600 hover:to-black-700 transition shadow-lg text-xl"
+        >
+          Add User
+        </button>
+      </form>
+
+      <div
+        id="users"
+        class="users grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      ></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

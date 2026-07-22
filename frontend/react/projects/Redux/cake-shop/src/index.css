@@ -1,0 +1,63 @@
+.button {
+  background-color: #04aa6d;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 150px;
+  align-items: center;
+}
+
+.numOfCakes {
+  padding-top: 250px;
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.numOfIce {
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.numOfCakesHooks {
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.numOfCakesNew {
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.errorCake {
+  padding-top: 350px;
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.errorIce {
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.errorHooks {
+  justify-content: center;
+  display: grid;
+  justify-items: center;
+}
+
+.input {
+  width: 150px;
+  height: 30px;
+  padding: 2px;
+}

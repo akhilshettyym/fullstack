@@ -1,0 +1,30 @@
+Introduction to React Fiber
+React Fiber is a new core algorithm introduced in React to improve how updates and rendering are handled. It’s a smarter way for React to decide what to update and when.
+
+Why Was React Fiber Created?
+The old React algorithm (called the Reconciliation algorithm) worked fine for simple apps but struggled with complex features like:
+
+Animations
+Smooth UI updates
+Managing user interactions (like scrolling and clicking)
+React Fiber fixes these problems by:
+
+Breaking the rendering work into small chunks
+Spreading the work across multiple frames (instead of doing everything at once)
+Assigning priority to different updates (e.g., user input > background work)
+Key Features of Fiber:
+Incremental Rendering – Breaks rendering into smaller steps to avoid freezing the app.
+Pausing & Resuming Work – Can pause rendering and resume it later if something more important comes up.
+Priority-Based Updates – User interactions (like typing) are prioritized over less important tasks.
+Concurrency – Handles multiple updates at once without slowing down the app.
+Reusing Work – If the same update comes in before the last one finishes, Fiber can reuse the work already done.
+How It Works (Simple Analogy):
+Imagine React is like a painter painting a wall.
+The old algorithm would force the painter to finish the whole wall in one go (which could take a long time).
+Fiber lets the painter take breaks, handle urgent tasks (like fixing a drip), and come back later to continue.
+Why It’s Important:
+React Fiber makes your app feel smoother and more responsive.
+It ensures that user interactions remain fast even when complex updates are happening.
+It’s the foundation for new features like React Suspense and Concurrent Mode.
+In Short:
+React Fiber = Smarter and faster updates = Better user experience

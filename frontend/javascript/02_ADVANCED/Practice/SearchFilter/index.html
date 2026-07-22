@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="flex flex-col gap-10 items-center">
+      <input
+        class="inp px-5 rounded outline-none bg-[#111] text-[#888]"
+        type="text"
+        placeholder="Search..."
+      />
+      <div class="cards-container flex gap-10" id="card-container">
+        <div class="card">
+          <img
+            class="bg-img"
+            src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=700&q=80"
+          />
+
+          <div class="blurred-layer"></div>
+
+          <div class="content">
+            <h3>User 123</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Laboriosam, minima.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

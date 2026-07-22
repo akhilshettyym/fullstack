@@ -1,0 +1,61 @@
+Local Storage, Session Storage and Cookies
+
+1. Local Storage:
+   - Local Storage is a web storage mechanism that allows you to store key-value pairs in a web browser with no expiration date.
+   - Data stored in Local Storage persists even after the browser is closed and reopened.
+   - It is accessible only within the domain that created it.
+
+   Example:
+   ```javascript
+   // Storing data
+   localStorage.setItem('username', 'JohnDoe');
+
+   // Retrieving data
+   const username = localStorage.getItem('username');
+   console.log(username); // Output: JohnDoe
+
+   // Removing data
+   localStorage.removeItem('username');
+
+   // Clearing all data
+   localStorage.clear();
+   ```
+
+2. Session Storage:
+   - Session Storage is similar to Local Storage but with a key difference: data stored in Session Storage is cleared when the page session ends (i.e., when the browser tab is closed).
+   - It is also accessible only within the domain that created it.
+
+   Example:
+   ```javascript
+   // Storing data
+   sessionStorage.setItem('sessionID',          '123456');  
+    // Retrieving data  
+    const sessionID = sessionStorage.getItem('sessionID');
+    console.log(sessionID); // Output: 123456
+
+    // Removing data
+    sessionStorage.removeItem('sessionID');
+    
+    // Clearing all data
+    sessionStorage.clear();
+    ```
+    
+3. Cookies:
+    - Cookies are small pieces of data stored on the client-side and sent to the server with every HTTP request.
+    - Cookies have an expiration date and can be set to expire after a certain period.
+    - They can be accessed by both the client and server.
+    
+    Example:
+    ```javascript
+    // Setting a cookie
+    document.cookie = "user=JaneDoe; expires=Fri, 31 Dec 2024 23:59:59 GMT; path=/";
+    
+    // Retrieving a cookie
+    const cookies = document.cookie;
+    console.log(cookies); // Output: user=JaneDoe
+
+    // Deleting a cookie
+    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+    ```
+    
+In summary, Local Storage and Session Storage are both client-side storage options with different lifespans, while Cookies are used for both client-side and server-side data storage with more control over expiration and scope.

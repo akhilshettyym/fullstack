@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-900 text-gray-100 min-h-screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Users - Dark Theme</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1d4ed8",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="flex flex-col items-center justify-center min-h-screen p-8 bg-gray-900"
+  >
+    <h1 class="text-4xl font-bold mb-10 text-center">Random Users</h1>
+
+    <div
+      id="users-container"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 mb-12"
+    ></div>
+
+    <button
+      id="refresh-btn"
+      class="px-8 py-4 bg-blue-700 hover:bg-blue-600 text-white font-semibold rounded-lg shadow-lg transition transform hover:scale-105"
+    >
+      Refresh Users
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
