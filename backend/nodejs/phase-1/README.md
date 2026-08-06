@@ -2,7 +2,7 @@
 
 At its core, the Node.js runtime consists of the **V8 engine** (for JavaScript execution) and **libuv** (for asynchronous I/O). All JavaScript code runs through V8, which provides a _call stack_ for function calls and a _memory heap_ for objects and variables. Whenever a function executes, a stack frame is pushed onto the call stack; when it returns, that frame is popped off. New objects and variables are allocated on the heap. This clear separation lets us reason about execution order and memory usage: the stack handles execution context, while the heap holds data.
 
-Under the hood, V8 implements a **generational garbage collector** to manage memory. Newly created objects go into the _young generation_ (nursery); most are short-lived and quickly collected by the **Scavenger** (a copying collector). Objects that survive one or two GC cycles are promoted to the _old generation_, where a **Mark-Sweep-Compact** collector reclaims memory. In summary, V8 uses a minor garbage collection (Scavenger) on the young heap and a major Mark-Compact collection on the old heap. Understanding this helps debug memory leaks: you can take heap snapshots (see Phase 4) to see which objects persist across GC cycles.
+Under the hood, V8 implements a **generational garbage collector** to manage memory. Newly created objects go into the _young generation_ (nursery); most are short-lived and quickly collected by the **Scavenger** (a copying collector). Objects that survive one or two GC cycles are promoted to the _old generation_, where a **Mark-Sweep-Compact** collector reclaims memory. In summary, V8 uses a minor garbage collection (**Scavenger**) on the young heap and a major **Mark-Compact** collection on the old heap. Understanding this helps debug memory leaks: you can take heap snapshots (see Phase 4) to see which objects persist across GC cycles.
 
 V8 also employs **just-in-time (JIT) compilation** for performance. Modern V8 uses Ignition (an interpreter) and TurboFan (an optimizing compiler) together. Code is first compiled to bytecode by Ignition, and “hot” functions are later optimized by TurboFan into machine code. In practice, this means frequently-run code paths become very fast over time. The pipeline (Ignition → TurboFan) replaced the older Crankshaft engine, improving startup time and reducing memory usage.
 
@@ -63,7 +63,7 @@ The Call Stack follows a LIFO (Last In, First Out) data structure that manages e
 
 **Execution Flow**: Functions at the top of the stack execute first. When a function finishes execution (hits a return statement or reaches the end), its frame is popped off the stack, and execution returns to the underlying frame.
 
-**Stack Overflow**: The stack has a fixed, contiguous memory limit allocated by the OS/runtime (typically ~1MB). If recursive function calls occur without a termination condition, stack frames accumulate until they breach this limit, throwing a RangeError: Maximum call stack size exceeded.
+**Stack Overflow**: The stack has a fixed, contiguous memory limit allocated by the OS/runtime (typically ~1MB). If recursive function calls occur without a termination condition, stack frames accumulate until they breach this limit, throwing a **RangeError: Maximum call stack size exceeded**.
 
 **The Memory Heap**:
 
@@ -71,7 +71,7 @@ The Call Stack follows a LIFO (Last In, First Out) data structure that manages e
 
 - **Content Stored**: Objects, functions, arrays, closures, strings, and dynamically allocated data types.
 
-- **Pointers vs. Values**: When an object is declared (const obj = { key: 'value' }), obj on the call stack does not hold the actual object data. Instead, it holds a 64-bit reference address (pointer) pointing to the location in the heap where the object's properties reside.
+- **Pointers vs. Values**: When an object is declared `(const obj = { key: 'value' })`, obj on the call stack does not hold the actual object data. Instead, it holds a 64-bit reference address (pointer) pointing to the location in the heap where the object's properties reside.
 
 - **Allocation Overhead**: Allocating memory on the heap is slower than stack allocation because V8 must scan for a contiguous block of unallocated memory large enough to fit the target structure.
 
