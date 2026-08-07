@@ -78,7 +78,7 @@ Streams are instances of EventEmitter designed to handle data flow incrementally
 
 ```
               STREAM TYPE COMPARISON & DATA FLOW
-              
+
 Readable Stream ---> [ Internal Buffer ] ---> Read via consumer
                                                    |
 Writable Stream <--- [ Internal Buffer ] <--- Write from producer
@@ -101,7 +101,7 @@ Transform Stream---> [ Read Buffer ] <== [_transform()] <== [ Write Buffer ]
 
 **Duplex Streams**: Streams that implement both Readable and Writable interfaces with independent internal channels (e.g., a TCP net.Socket).
 
-**Transform Streams**: A specialized Duplex stream where the output is causally computed from the input (e.g., zlib.createGzip(), crypto.createCipheriv()). Input chunks written to the writable side pass through a custom _transform(chunk, encoding, callback) method to produce output on the readable side.
+**Transform Streams**: A specialized Duplex stream where the output is causally computed from the input (e.g., zlib.createGzip(), crypto.createCipheriv()). Input chunks written to the writable side pass through a custom \_transform(chunk, encoding, callback) method to produce output on the readable side.
 
 #### Internal Buffering and highWaterMark:
 
@@ -115,7 +115,7 @@ Default Object Mode (objectMode: true): 16 objects.
 
 ```
                      BACKPRESSURE FLOW CONTROL
-                     
+
 Producer                        Writable Stream Buffer
 +----------+   stream.write(chunk)   +-----------------------+
 |  Reader  | ----------------------> | [Byte] [Byte] [Byte]  | (Buffer Full!)
@@ -165,7 +165,7 @@ function writeWithBackpressure(writer, data) {
        writer.write(data[i], () => writer.end()); // Final write
      } else {
        // Check if internal buffer is full
-       ok = writer.write(data[i]); 
+       ok = writer.write(data[i]);
      }
    }
    if (i > 0) {
@@ -183,7 +183,7 @@ While `.pipe()` bridges readable and writable streams, it is considered legacy c
 
 ```JavaScript
 // DANGEROUS: .pipe() leaks file descriptors on failure
-readable.pipe(transform).pipe(writable); 
+readable.pipe(transform).pipe(writable);
 // If 'transform' throws an error, readable and writable streams remain open!
 stream.pipeline() solves this by managing stream lifecycles end-to-end:
 ```
@@ -238,7 +238,8 @@ const reader = webStream.getReader(); // Locks stream to this reader
 The EventEmitter class (require('events')) sits at the foundation of Node's reactive design.
 
       EVENT EMITTER INTERNAL MEMORY STRUCTURE
-      
+
+
 EventEmitter Instance:
 
 ```js
@@ -251,17 +252,17 @@ EventEmitter Instance:
  _maxListeners: 10
 ```
 
-Synchronous Execution Core
-When an event is triggered via emitter.emit(eventName, ...args):
+#### Synchronous Execution Core:
 
-EventEmitter looks up eventName in its internal, plain C++ initialized JavaScript hash map (this._events).
+- When an event is triggered via emitter.emit(eventName, ...args):
 
-If listeners exist, emit() iterates sequentially through the array of registered listener functions.
+- EventEmitter looks up eventName in its internal, plain C++ initialized JavaScript hash map (this.\_events).
 
-Execution is entirely synchronous on the V8 Call Stack. Listeners execute one by one in the order they were attached before emit() finishes execution.
+- If listeners exist, emit() iterates sequentially through the array of registered listener functions.
 
-JavaScript
+- Execution is entirely synchronous on the V8 Call Stack. Listeners execute one by one in the order they were attached before emit() finishes execution.
 
+```JavaScript
 const EventEmitter = require('events');
 const emitter = new EventEmitter();
 
@@ -277,21 +278,24 @@ console.log('After');
 // Listener 1
 // Listener 2
 // After
-Max Listeners Limit & Memory Leaks
-By default, EventEmitter sets a soft limit of 10 listeners per named event. If code exceeds this threshold, Node prints a runtime warning: MaxListenersExceededWarning.
+```
 
-Why? Adding an excessive number of listeners to an event emitter usually signals a memory leak. Closures captured by attached callbacks retain variables in their parent lexical scopes, preventing V8 GC from freeing them.
+#### Max Listeners Limit & Memory Leaks:
 
-Modification: Increase using emitter.setMaxListeners(n) or globally via EventEmitter.defaultMaxListeners = n.
+- By default, EventEmitter sets a soft limit of 10 listeners per named event. If code exceeds this threshold, Node prints a runtime warning: MaxListenersExceededWarning.
 
-The 'error' Event Guard
-If an EventEmitter emits an 'error' event and no listener is registered for 'error', Node.js treats it as a fatal exception. The runtime prints the stack trace and crashes the process immediately.
+- Why? Adding an excessive number of listeners to an event emitter usually signals a memory leak. Closures captured by attached callbacks retain variables in their parent lexical scopes, preventing V8 GC from freeing them.
+
+##### Modification: Increase using `emitter.setMaxListeners(n)` or globally via EventEmitter.`defaultMaxListeners = n`.
+
+- The 'error' Event Guard: If an EventEmitter emits an 'error' event and no listener is registered for 'error', Node.js treats it as a fatal exception. The runtime prints the stack trace and crashes the process immediately.
 
 Process Lifecycle, Signal Handling, and Graceful Shutdowns
 Node processes interface directly with Operating System signal primitives handled by libuv.
 
+```
                    GRACEFUL SHUTDOWN SEQUENCE
-                   
+
 OS / Orchestrator (K8s/Docker)
       |
       | Signals SIGTERM (Process ID)
@@ -306,33 +310,9 @@ OS / Orchestrator (K8s/Docker)
       +---> 3. Close Database Connection Pools & File Handles
       +---> 4. Flush Pending Logs & Metrics
       +---> 5. process.exit(0)
-Operating System Signals
-Signal
-Origin
-Standard Use Case
-SIGINT
-Terminal (Ctrl+C).
-Interrupt signal for local process shutdown.
-SIGTERM
-Orchestrators (Docker, Kubernetes, systemd).
-Polite request to terminate before forcing exit (SIGKILL).
-SIGHUP
-Terminal disconnection / Controller.
-Used to trigger application configuration reloads.
-SIGKILL
-Kernel (kill -9).
-Immediate process termination. Cannot be intercepted in JS.
-Process Exit Codes
-Exit Code
-Meaning
-0
-Success / Clean exit.
-1
-Uncaught Fatal Exception (Uncaught JS error).
-128 + N
-Process terminated by OS Signal N (e.g., 130 for SIGINT, 143 for SIGTERM).
-JavaScript
+```
 
+```JavaScript
 // Production-Grade Graceful Shutdown Pattern
 const express = require('express');
 const app = express();
@@ -340,7 +320,7 @@ const server = app.listen(3000);
 
 function shutdown(signal) {
  console.log(`Received ${signal}. Starting graceful shutdown...`);
- 
+
  // Force exit if operations hang too long
  const forceExitTimeout = setTimeout(() => {
    console.error('Forced shutdown due to timeout.');
@@ -364,16 +344,20 @@ function shutdown(signal) {
 
 process.on('SIGTERM', () => shutdown('SIGTERM'));
 process.on('SIGINT', () => shutdown('SIGINT'));
+```
+
 Standard I/O Stream Characteristics
+
 process.stdin: Readable stream.
 
 process.stdout / process.stderr: Writable streams.
 
-Sync vs Async Execution: Writing to stdout/stderr can be blocking or non-blocking depending on the destination file descriptor. If connected to a file or pipe on Unix, writes are synchronous and block the main event loop thread. If connected to a terminal (TTY), writes are asynchronous.
+- **Sync vs Async Execution**: Writing to stdout/stderr can be blocking or non-blocking depending on the destination file descriptor. If connected to a file or pipe on Unix, writes are synchronous and block the main event loop thread. If connected to a terminal (TTY), writes are asynchronous.
 
-Node.js Web Platform Convergence
-Node.js has aligned core modules with modern browser standard Web Platform APIs, reducing reliance on third-party libraries and ensuring cross-runtime code reuse.
+- Node.js Web Platform Convergence:
+  Node.js has aligned core modules with modern browser standard Web Platform APIs, reducing reliance on third-party libraries and ensuring cross-runtime code reuse.
 
+```
       WEB PLATFORM GLOBALS IN modern NODE.JS
 +-------------------------------------------------------+
 |  Fetch API      | fetch(), Headers, Request, Response |
@@ -388,18 +372,20 @@ Node.js has aligned core modules with modern browser standard Web Platform APIs,
 +-----------------+-------------------------------------+
 |  Cryptography   | crypto.subtle (Web Crypto API)      |
 +-------------------------------------------------------+
-Fetch API Integration
-Built natively into Node.js using undici (a high-performance HTTP/1.1 and HTTP/2 client written in C++ and Node). Bypasses legacy legacy http.request() overhead, supporting standard WHATWG fetch(), Headers, Request, and Response interfaces globally.
+```
 
-structuredClone() vs. JSON Serialization
-The global structuredClone() function exposes V8's internal JS Object Serialization Algorithm.
+- Fetch API Integration:
+  Built natively into Node.js using undici (a high-performance HTTP/1.1 and HTTP/2 client written in C++ and Node). Bypasses legacy legacy http.request() overhead, supporting standard WHATWG fetch(), Headers, Request, and Response interfaces globally.
 
-Deep Cloning: Unlike JSON.parse(JSON.stringify(obj)), structuredClone() correctly copies recursive circular references, Set, Map, ArrayBuffer, Date, and RegExp instances without stripping data types.
+- structuredClone() vs. JSON Serialization:
+  The global _structuredClone()_ function exposes V8's internal JS Object Serialization Algorithm.
 
-Web Crypto API (crypto.subtle)
-Complements the native legacy crypto module with standard promise-based Web Crypto specifications. Allows non-blocking cryptographic execution on libuv threads for key generation, signing, verification, and encryption across both Node.js and browser contexts.
-JavaScript
+- _Deep Cloning_: Unlike JSON.parse(JSON.stringify(obj)), structuredClone() correctly copies recursive circular references, Set, Map, ArrayBuffer, Date, and RegExp instances without stripping data types.
 
+- Web Crypto API (crypto.subtle):
+  Complements the native legacy crypto module with standard promise-based Web Crypto specifications. Allows non-blocking cryptographic execution on libuv threads for key generation, signing, verification, and encryption across both Node.js and browser contexts.
+
+```JavaScript
 // Cross-Platform Web Crypto API Example
 async function generateKey() {
  const keyPair = await crypto.subtle.generateKey(
@@ -412,3 +398,6 @@ async function generateKey() {
  );
  return keyPair;
 }
+```
+
+---
